@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+    	<header id="main"><h1 class="header">Scopone</h1></header>
+        <table width="100%" border="0" id="results">
+  		<tbody>
+    	<tr>
+    	  <th>Squadra A</th>
+    	  <th>VS</th>
+    	  <th>Squadra B</th>
+    	</tr>
+        <tr>
+        <td colspan="3">
+          <div class="border" id="rnd">
+          <h1>round</h1>
+          <p id="rn" style="text-align:center; font-size:420%; margin:-1%">0</p>
+          </div>
+        </td>
+        
+        </tr>
+        <tr>
+        	
+    	  <td width="40%"><input id="" class="pointinp" type="number" value="0"></td>
+    	  <td width="20%">
+          
+          <input type="button" id="add" value="+" onClick="addrow()">
+          </td>
+    	  <td width="40%"><input id="" class="pointinp" type="number" value="0"></td>
+    	</tr>
+  		</tbody>
+		</table>
+       
+        
+        <hr>
+   
+         <div id="score">
+         <h1>Risultato</h1>
+         <p id="scoreA">0</p>
+         <p id="scoreB">0</p>
+		 </div>
+        
+        
+    </body>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+  	<script>
+	
+    function addrow(){
+		var allinputa = document.getElementsByClassName('pointinp');
+		var actualround=document.getElementById('rn');
+		var row= document.createElement('tr');
+		var col_L= document.createElement('td');
+		var col_C= document.createElement('td');
+		var col_R= document.createElement('td');
+		var inputA= document.createElement('input');
+		var inputB=document.createElement('input');
+		var button=document.createElement('input');
+		var resA=0;
+		var resB=0;
+		var i=0;
+		inputA.setAttribute('type','number');
+		inputA.setAttribute('id','ptsA'+rn);
+		inputA.setAttribute('class','pointinp');
+		inputA.setAttribute('value','0');
+		inputB.setAttribute('type','number');
+		inputB.setAttribute('id','ptsB'+rn);
+		inputB.setAttribute('class','pointinp');
+		inputB.setAttribute('value','0');
+		button.setAttribute('id','add');
+		button.setAttribute('type','button');
+		button.setAttribute('value','+');
+		button.setAttribute('onClick','addrow(0)');
+		col_L.appendChild(inputA);
+		col_R.appendChild(inputB);
+		col_C.appendChild(button);
+		row.appendChild(col_L);
+		row.appendChild(col_C);
+		row.appendChild(col_R);
+		document.getElementById('results').appendChild(row);
+		for(i=0;i<allinputa.length;i++)
+		{
+			if(i%2==0)
+			{
+				resA=resA+parseInt(allinputa[i].value);
+			}
+			else
+			{				
+				resB=resB+parseInt(allinputa[i].value);
+			}
+		}
+		document.getElementById('scoreA').innerHTML=resA;
+		document.getElementById('scoreB').innerHTML=resB;
+		actualround.innerHTML=parseInt(actualround.innerHTML)+1;
+		}
+		
+		
+    </script>
+</html>
